@@ -8,10 +8,11 @@
 
 以上本质是基于一个因果关系(causality)来定义的`hanppend before` 
 
-`concurrence`意味着a → b不成立并且b→a也不成立，即a,b之间缺少因果关系，因此`happend before`是partial order. 同时由于a → a不成立，所以`happend before`是反自反(irreflexive)的partial order
+`concurrence`意味着a → b不成立并且b→a也不成立，即a,b之间缺少因果关系,因此`happend before`是partial order.
+同时由于a → a不成立，所以`happend before`是反自反(irreflexive)的partial order
 
 
-#### logical clocks
+### logical clocks
 
 定义Ci(b)为event b在process i 上发生时的clock。
 
@@ -27,7 +28,7 @@
 具体实现：
 
 1. 对于任意Pi在两个successive event之间会增加Ci, Ci += 1
-2.
+2. 以下
   - a. 如果a是Pi上发送信息的event，信息m包含一个时间戳Tm = Ci(a)
   - b. 当Pj收到信息m，设置Cj = max(Cj, Tm) + 1
 
