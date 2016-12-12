@@ -8,7 +8,9 @@
 
 以上本质是基于一个因果关系(causality)来定义的`hanppend before`
 
-`concurrence`意味着a → b不成立并且b→a也不成立，即a,b之间缺少因果关系,因此`happend before`是partial order.
+`concurrence`意味着a → b不成立并且b→a也不成立，即a,b之间缺少因果关系
+
+b →  c 并且 a  →  c, 但是a,b并不能推导出因果关系，因此`happend before`是partial order.
 同时由于a → a不成立，所以`happend before`是反自反(irreflexive)的partial order
 
 
