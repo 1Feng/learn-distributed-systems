@@ -46,7 +46,7 @@ Pi < Pj可以是process name 字典序或者数字标示的顺序。
 
 paper中举例使用total ordering解决分布式情况下mutual exclusion的问题（案例中假设所有process都不会fail，也没有network partiton）
 
-值得特别强调的一点，这里的total ordering和｀hanppend before｀没有关系，但是这个total ordering的意义在于可以用在例如mutual exclusion场景，用顺序来保证fairness（一般的mutual exclusion的关系是FIFO来保证fairness的）
+值得特别强调的一点，这里的total ordering和`hanppend before`没有关系，但是total ordering的意义在于可以用在例如mutual exclusion场景，用顺序来保证fairness（一般的mutual exclusion的关系是FIFO来保证fairness的）
 
 
 ### Anomalous Behavior
