@@ -41,4 +41,4 @@ processes编号0--n-1, VC利用数组实现，初始为[0,0,0...0]
 ### References
 1. [Vector Clock In Wikipedia](https://en.wikipedia.org/wiki/Vector_clock)
 2. [《Distributed Systems An Algorithmic Approach Second Edition》 6.3 Vector Clock](https://www.amazon.com/Distributed-Systems-Algorithmic-Approach-Information/dp/1466552972)
-3. [Why Vector Clocks Are Hard by Justin Sheehy](http://basho.com/posts/technical/why-vector-clocks-are-hard/)
+3. [Why Vector Clocks Are Hard](http://basho.com/posts/technical/why-vector-clocks-are-hard/)
