@@ -3,7 +3,7 @@
 Lammport Clock(Logical Clock) 只能通过因果关系推断其Logical Clock的关系，即：
 
 - 如果a → b, 则C(a) < C(b), 反过来并不一定成立，例如：
-  - 同一个proces上的两个事件由a → b 得到C(a) < C(b),
+  - 同一个process上的两个事件由a → b 得到C(a) < C(b),
   - 但是a,b可能因为和另一个process上的事件c没有因果关系处于并发状态
   - 但是按照Lammport的描述的Logic Clock的实现，C(c)很有可能满足 C(a) < C(c) < C(b)
   - 然而实际情况是c和a,c和b均无因果关系
@@ -23,10 +23,10 @@ Vector Clock的出现就是为了解决上述问题。
 
 ###How
 
-processes编号0--n-1, VC利用数组实现，初始为[0,0,0...0]
+processes编号0--n-1, VC利用数组实现，下标从0到n-1，初始为[0,0,0...0]
 
-1. 对于process i，本地的VC为VCi,对于任意事件发生后 ++VCi[i]
-2. 当向其他process发送数据时，带上本地的VC
+1. 对于process i，本地的VC为VCi，对于任意事件发生后 ++VCi[i]
+2. 当i向其他process发送数据时，带上本地的VCi
 3. 当process j接收到VCi时
   - ++VCj[j]
   - ∀k : 0 <= k <= n - 1:  VCj[k] = max(VCi[k], VCj[k])
