@@ -37,13 +37,17 @@ b →  c 并且 a  →  c, 但是a,b并不能推导出因果关系，因此`happ
 Logical Clock 的缺点：a, b可能同时发生，C(a) < C(b)并不能推断出a → b
 
 ###total ordering
+> In mathematics, a linear order, total order, simple order, or (non-strict) ordering is a binary relation on some set X, which is antisymmetric, transitive, and total. A set paired with a total order is called a totally ordered set, a linearly ordered set, a simply ordered set, or a chain. ---- from wikipedia
 
 定义关系=>如下：
 >如果a属于Pi，b属于Pj，a => b当且仅当要么Ci(a) < Ci(b)要么Ci(a) = Ci(b) 并且Pi < Pj
 
 Pi < Pj可以是process name 字典序或者数字标示的顺序。
 
-paper中举例使用total ordering解决共享资源请求顺序的问题（案例中假设所有process都不会fail，也没有network partiton）
+paper中举例使用total ordering解决分布式情况下mutual exclusion的问题（案例中假设所有process都不会fail，也没有network partiton）
+
+值得特别强调的一点，这里的total ordering和hanppend before没有关系，这是这个total order关系的意义在于这个关系可以用在例如mutual exclusion场景，利用顺序来保证fairness（一般的mutual exclusion的关系是FIFO来保证公平的）
+
 
 ### Anomalous Behavior
 
