@@ -36,7 +36,7 @@ processes编号0--n-1, VC利用数组实现，下标从0到n-1，初始为[0,0,0
 1. partial order not total order
   - 无法满足VC(a) < VC(b)时还是无法解决order问题。dynamo论文中的提到的处理方式是将该问题抛给client根据业务处理（PS：dynamo据说已经不用vector clock了）
 2. vector size 随着processes数量线性增长
-  - Riak开发者提供了一种[解决方案](http://basho.com/posts/technical/why-vector-clocks-are-hard/),在vector clock中带上各自processes的本地time stamp，当vector size到达指定的阈值后，删除最旧的process的数据；这样造成的问题就是丢失了和最旧的process的因果关系，按照作者的说法，好在这并不会造成数据丢失，just a tradoff！
+  - Riak开发者提供了一种[解决方案](http://basho.com/posts/technical/why-vector-clocks-are-hard/),在vector clock中带上各自processes的本地time stamp，当vector size到达指定的阈值后，删除最旧的process在vector clock中的数据；这样造成的问题就是丢失了和最旧的process的因果关系，按照作者的说法，好在这并不会造成数据丢失，just a tradoff！
   
 ### References
 1. [Vector Clock In Wikipedia](https://en.wikipedia.org/wiki/Vector_clock)
