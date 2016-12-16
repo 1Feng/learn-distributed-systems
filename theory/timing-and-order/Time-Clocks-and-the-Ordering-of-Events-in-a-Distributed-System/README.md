@@ -66,3 +66,8 @@ paper中举例使用total ordering解决分布式情况下mutual exclusion的问
 
 ###Physical Clocks
 大概介绍了什么样（主要指同步）的physical clock可以用来解决上述的问题。
+
+### References
+1. wikipedia
+2. [《Distributed Systems An Algorithmic Approach Second Edition》 6.2 Logical Clock](https://www.amazon.com/Distributed-Systems-Algorithmic-Approach-Information/dp/1466552972)
+3. [《Distributed Systems An Algorithmic Approach Second Edition》 7.2 Solutions On Message-Passing Systems](https://www.amazon.com/Distributed-Systems-Algorithmic-Approach-Information/dp/1466552972)
