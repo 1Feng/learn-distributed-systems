@@ -14,7 +14,7 @@
   
 - monotonic clock
   - 不受NTP影响，或者，受NTP同步的影响，时钟只会降低或者升高频率，以尽快完成时钟同步
-  - 如linux上的int clock_gettime(clockid_t clk_id, struct timespec *tp),clk_id为CLOCK_MONOTONIC_RAW(本质是jiffies)或者是CLOCK_MONOTONIC分别对象上述不受NTP影响和受NTP影响两种
+  - 如linux上的int clock_gettime(clockid_t clk_id, struct timespec *tp),clk_id为CLOCK_MONOTONIC_RAW(本质是jiffies)或者是CLOCK_MONOTONIC；分别对应上述不受NTP影响和受NTP影响两种
 
 适用性：
 - wall clock
