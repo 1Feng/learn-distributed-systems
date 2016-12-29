@@ -49,5 +49,6 @@
   
 ##References
 1. [《Designing Data-Intensive Applications》8.Unreliable Clocks](http://dataintensive.net/)
-  
-  
+2. [How to do distributed locking](http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)
+3. [《Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System》](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/timing-and-order/Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System)
+4. [Vector Clock](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/timing-and-order/vector-clock)
