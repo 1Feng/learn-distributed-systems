@@ -38,7 +38,7 @@
   
 ##Logic Clock
 
-利用因果关系来实现Logic Clock，见Lamport的论文[《Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System》](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/timing-and-order/Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System)
+利用因果关系来实现Logic Clock，见Lamport的[论文](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/timing-and-order/Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System)
 
 利用Logic Clock来保证时序(偏序)，见 [Vector Clock](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/timing-and-order/vector-clock)
   
