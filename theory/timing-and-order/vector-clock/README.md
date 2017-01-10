@@ -2,7 +2,7 @@
 ###Why
 Lammport Clock(Logical Clock) 只能通过因果关系推断其Logical Clock的关系，即：
 
-- 如果a → b, 则C(a) < C(b), 反过来并不一定成立，例如：
+- 如果a → b, 则C(a) < C(b), 反过来并不一定成立（其实就是事后诸葛亮，事件先发生才产生因果关系），同时：
   - 同一个process上的两个事件由a → b 得到C(a) < C(b),
   - 但是a,b可能因为和另一个process上的事件c没有因果关系处于并发状态
   - 但是按照Lammport的描述的Logic Clock的实现，C(c)很有可能满足 C(a) < C(c) < C(b)
