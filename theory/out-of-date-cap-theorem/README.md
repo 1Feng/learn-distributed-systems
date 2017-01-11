@@ -49,7 +49,7 @@ network partition 图示:
 
 CAP的问题也是从这里开始体现：
 
-- partition tolerance并非和CA对等的属性，而是一种包含的关系，即如何去tolerant partition，partition发生时是选A还是选C
+- partition tolerance并非和CA对等的属性，而是一种因果的关系：partition发生时是选A还是选C，即如何去tolerant partition，
 - 分布式系统需要考虑的其他[网络问题](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/unreliable-network)也很多，包括延迟，网络不可靠等，并不仅仅是partition，所以使用CA,CP,AP去描述一个分布式系统并不完整
 - 很多分布式系统可以根据业务需求降低对consistent的要求，降低对available的要求，所以根本无法用CAP来描述
 
