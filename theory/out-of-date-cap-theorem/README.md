@@ -70,6 +70,7 @@ CAP的问题也是从这里开始体现：
 
 某个client和所有的leader都不在一个partition，此时CAP-available丢失，如果按照CAP理论，只能称之为CP
 
+如果你允许（业务上允许）图示中的client2对replica进行read操作，则CAP-consistent也会丢失，只能称之为P（CAP的3选2现在成了3选1）
 **情景二**
 
 ![Alt text](https://github.com/1Feng/learn-distributed-systems/blob/master/theory/out-of-date-cap-theorem/images/multi-leader.png)
@@ -81,7 +82,7 @@ leaders不在一个partition，此时CAP-consistent丢失，如果按照CAP理�
 
 R + W > N,但是当network partition发生时，如果某个client被划分到了节点较少的一侧，那么CAP-available丢失，只能称之为CP；
 
-如果你允许（业务上允许）图示中的client2进行read操作，则CAP-consistent也会丢失，只能称之为P，这也是CAP存在问题的一个例子。
+如果你允许（业务上允许）图示中的client2进行read操作，则CAP-consistent也会丢失，只能称之为P（CAP的3选2现在成了3选1）
 
 ##References
 1. [ Martin Kleppmann. please-stop-calling-databases-cp-or-ap](https://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html)
