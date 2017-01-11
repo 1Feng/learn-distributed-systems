@@ -44,7 +44,9 @@ terminate 是指任意使用该分布式系统的算法都会终止，注意是�
 > 网络割接和交换机故障都会造成network partition
 
 network partition 图示:
+
 ![Alt text](https://github.com/1Feng/learn-distributed-systems/blob/master/theory/out-of-date-cap-theorem/images/network-partition.png)
+
 CAP的问题也是从这里开始体现：
 
 - partition tolerance并非和CA对等的属性，而是一种包含的关系，即如何去tolerant partition，partition发生时是选A还是选C
@@ -80,3 +82,7 @@ leaders不在一个partition，此时CAP-consistent丢失，如果按照CAP理�
 R + W > N,但是当network partition发生时，如果某个client被划分到了节点较少的一侧，那么CAP-available丢失，只能称之为CP；
 
 如果你允许（业务上允许）图示中的client2进行read操作，则CAP-consistent也会丢失，只能称之为P，这也是CAP存在问题的一个例子。
+
+##References
+1. [ Martin Kleppmann. please-stop-calling-databases-cp-or-ap](https://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html)
+2. [Martin Kleppmann. 《Designing Data-Intensive Applications》9.Linearizability](http://dataintensive.net/)
