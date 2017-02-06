@@ -33,6 +33,7 @@
 那么分布式环境下的时序问题如何解决呢?
 - 全序(total order)或者高精度的时间点共识(强调某个时间点)：
   - 使用原子钟加更严格复杂的时钟同步策略来保证误差
+  - fault-tolent total ordering broadcast
 - 偏序（partial order）：
   - 利用因果关系来解决时序问题，即logic clock
   
