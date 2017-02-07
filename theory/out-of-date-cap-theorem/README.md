@@ -4,7 +4,7 @@
 
 ##Consistent
 
-这里的一致性指的是强一致，又称[linearizable](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/linearizability)或atomic。
+这里的一致性指的是强一致，又称[linearizable](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/consistency/linearizability)或atomic。
 
 论文中的描述如下：
 
@@ -16,7 +16,7 @@
 
 > 任意的一条读操作R，如果发生在某条写操作W完成之后，那么R读到的要么是W的内容，要么是W之后的写操作写入的内容
 
-更详细的描述可以参考[linearizable](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/linearizability)
+更详细的描述可以参考[linearizable](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/consistency/linearizability)
 
 这里的consistent 和 ACID中的consistent是完全不同的概念：
 - ACID-consistent特指事务
