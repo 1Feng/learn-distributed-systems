@@ -2,10 +2,15 @@
 > 所谓的linearizability其目的在于描述系统的数据，对外看起来就像只有一份，所有针对这部分数据的操作都是原子(ACID-atomic)的；在分布式系统领域来讲和CAP-consistent是等价的；在多核并发编程时由于存在CPU-Cache一致性问题，linearizability的概念同样适用。
 
 ##What
-通用的定义：
+**通用的定义（分布式 and 多核）**：
 > every read returns the latest value written into the shared variable preceding that read operation, then the shared object is linearizable
 
-对比CAP-consistent：
+
+**时序角度**：
+> 对于linearizability 系统，任意的两个操作的顺序都是可以比较的，即存在total order. 考虑：如果数据只有一份拷贝，同时操作又都是atomic的，那么任意两个操作总有先后关系，所以total order必然存在。
+
+
+**对比CAP-consistent**：
 > 任意的一条读操作R，如果发生在某条写操作W完成之后（或执行过程中），那么R读到的要么是W的内容，要么是W之后的写操作写入的内容
 
 这里的定义与CAP-consistent略有出入，为什么放宽限制为`或执行过程中`呢？因为定义之中所有的之前之后是否完成都是所谓`上帝视角`来判定的；对于client而言只有`clients之间额外的交流沟通`（参考后文），而对于`clients之间额外的交流沟通`而言，W完成与否也是无法判定的，考虑即使是执行W的client，也只能拿到W完成的响应时间，并不能真正知道server端W完成的时间（中间有网络延迟，物理时钟有误差等），即使利用因果关系进行`clients之间额外的交流沟通`也无从考证真正完成的时序。因此W是否真的完成并意义不大。
