@@ -23,14 +23,19 @@
   - 可以利用该系统实现分布式锁操作
   - 利用锁操作又可以用进行leader-election
   - 利用锁操作可以达成uniqueness guarantees
-  - 提供全局单调递增的fencing number
+  - linearizability sequence number --- 可以用来解决total order问题
+  
 
 ##How
 如果可以保证分布式系统的各操作时序可比较（total order），则linearizability可达成；所以linearizability的实现问题可以转换成实现fault-tolent total order 
+
 而实现fault-tolent total oerder是一个distributed consensus问题
 
+> 似乎就是一个循环: 如果实现了linearizability，则实现了linearizability sequence number，从而解决了total order问题，即实现了distributed consensus；而实现linearizability 又依赖通过distributed consensus实现total order
+
+
 ##Weakness
-linearizability is slow all the time, not only during a network fault
+linearizability is slow all the time, not only during a network fault（节点间通信达成共识本身就很耗时）
 
 ##References
 1. [Martin Kleppmann. 《Designing Data-Intensive Applications》9.Linearizability](http://dataintensive.net/)
