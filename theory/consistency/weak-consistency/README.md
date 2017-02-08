@@ -22,7 +22,7 @@
 
 ###Eventual Consistency
 
-> 最终一致性比较好容易理解，当前的primary-backup(asynchronous)架构大多都是使用的最终一致性模型
+> 最终一致性比较好容易理解，很多primary-backup(asynchronous)架构的RDBMS都是使用的最终一致性模型
 
 ####定义：
 > 如果没有新的更新/写入，最终所有的clients都会看到最新的数据
