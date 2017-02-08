@@ -1,8 +1,8 @@
 #Introduce
-> 所谓的linearizability其目的在于描述系统的数据，对外看起来就像只有一份，所有针对这部分数据的操作都是原子(ACID-atomic)的；在分布式系统领域来讲和CAP-consistent是等价的；在多核并发编程时由于存在CPU-Cache一致性问题，linearizability的概念同样适用。
+> 所谓的linearizability其目的在于描述系统的数据，对外看起来就像只有一份，所有针对这部分数据的操作都是原子(Concurrency-atomic)的；在分布式系统领域来讲和CAP-consistent是等价的；在多核并发编程时由于存在CPU-Cache一致性问题，linearizability的概念同样适用。
 
 ##What
-**通用的定义（分布式 and 多核）**：
+**通用的定义（分布式系统 and 多核系统）**：
 > every read returns the latest value written into the shared variable preceding that read operation, then the shared object is linearizable
 
 
