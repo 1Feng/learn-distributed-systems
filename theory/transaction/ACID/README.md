@@ -111,7 +111,7 @@ Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间�
 磁盘+replica
 
 
-#serializability
+#Serializability
 ##What
 > serializable-isolation 是最强等级的事务并发隔离，他可以确保即使多个事务是并行(parallel)执行的,最终的结果看起来也像是顺序的（serially），每个时间点只有一个事务在执行
 
@@ -127,13 +127,29 @@ Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间�
  - 解释：本质是将单机的性能问题通过scale out来加速
  - 缺点：事务执行涉及的数据不能跨分区
 - Two-Phase-Locking(2PL)
- - 待补充
+ - 描述：
+    - 当事务需要读一个object时，必须先以shared mode获取锁；多个事务可以同时以shared mode获取锁，但是一旦有事务以exclusive mode持有了锁，其他事务必须等待
+    - 如果事务想要写一个object，必须先以exclusive mode获取锁；区别于shared mode，同一时间只能有一个事务以exclusive mode持有锁
+    - 如果事务先读一个object，然后又要写（read-modify-write）,则需要将锁从shared mode升级为exclusive mode
+    - 一旦事务获取了锁，除非事务提交或者终止，否则不允许释放锁，这也是二阶段命名的由来；
+ - 解释：
+    - Expanding phase（扩大阶段--事务执行中）: locks are acquired and no locks are released.
+    - Shrinking phase（收缩阶段--事务结束时）: locks are released and no locks are acquired.
+ - 缺点：
+    - 吞吐量(through-put) 和 响应时间 与仅实现weak-isolation(如read-commit + No Read Skew)相比会比较差
+    - deadlock风险增大
 - Serializable Snapshot Isolation(SSI)
- - 待补充
+ - 与之前提到的snapshot-isolation相比，SSI为写操作增加了串行(serialization)冲突检测
+    - detecting stale MVCC reads：针对write skew，如果事务提交时检测到之前的前置条件已经不成立了，则终止事务
+    - detecting writes that affect prior read：同样考虑write skew，数据库从index-level/table-level保存一些信息，以便当事务提交后可以检测其操作是否造成其他正在执行的事务读取的数据过期（前置条件失效），如果存在则主动通知该事务终止
+
  
-##serializability VS linearizability
-> 待补充
+##Serializability VS Linearizability
+ - serializability： 事务隔离的属性，指事务执行的结果看起来像顺序的（串行的），以避免write skew
+ - linearizability： 指对读写共享数据的新近性（recency guarantee），与事务（把一系列操作看做整体来讨论）无关
+
 
 #References
 
+[1]. [Martin Kleppmann. 《Designing Data-Intensive Applications》7.Transactions](http://dataintensive.net/)
 [2]. [ACID properties](https://msdn.microsoft.com/en-us/library/aa480356.aspx)
