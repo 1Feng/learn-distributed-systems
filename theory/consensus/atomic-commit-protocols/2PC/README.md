@@ -11,8 +11,9 @@
   - Participant收到PREPARE消息后，开始执行事务（考虑ACID-isolation，此时已经持有各种锁），如果执行中有任何问题则回复abort，如果事务执行完成则回复YES
   - Transaction coordinator收到所有的回复，进入Phase 2
 - Phase 2:
-  - 如果Ttransaction coordinator超时时间内收到的响应均为YES，则向participants广播COMMIT消息，否则广播ABORT消息（广播之前需更新日志，记录事务执行状态）
-  - participant收到COMMIT/ABORT消息后，将事务正式commit/abort（考虑ACID-isolation，commit/abort完成后会释放所有锁）并回复ack
+  - 如果Ttransaction coordinator超时时间内收到的响应均为YES，则向participants广播COMMIT消息，否则广播ABORT消息（广播之前需更新日志，记录事务执行状态）
+  - participant收到COMMIT/ABORT消息后，将事务正式commit/abort（考虑ACID-isolation，commit/abort完成后会释放所有锁）并回复ack
+
 #How
 来看异常处理的情况：
 - Phase 1:
