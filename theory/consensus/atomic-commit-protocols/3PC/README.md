@@ -35,23 +35,27 @@
   - TC发送了PRE-COMMIT/ABORT消息之后，如果长时间没有收到ack或者宕机重启之后都会进入Phase 3，发送ABORT消息
   - Participants如果长时间没有收到PRE-COMMIT消息，则可以主动终止事务
   - Participants如果收到PRE-COMMIT后，回复ack之前发生宕机，则可以主动终止事务
-  - 如果Participant回复ACK超时，则进入phase 3
 - Phase 3: 
   - TC发送了COMMIT/ABORT消息之后，如果长时间没有收到ack或者宕机重启之后都会根据write-ahead-log的内容重新发送消息，重试几次后结束（如果是发送COMMIT，则意味着TC认为事务已经完成；ABORT消息同理）
   - Participants如果长时间没有收到COMMIT/ABORT消息，执行commit
-  - 如果在phase 2中，paticipant回复ack超时，并且长时间没有收到COMMIT/ABORT，则执行abort
   
 #Weakness
 
 > 3PC是一个理想状态的协议，假设fail-stop模型，并且可以通过timeout来准确判断网络故障还是宕机的情景(synchronous systems)下的协议（上文我们是按照真实环境来分析解析的），并且仅支持single-failure
 
 - 所以典型的一个3PC的冲突情景如下：
-  - Phase 2 TC 广播PRE-COMMIT消息，P1在收到消息前宕机，因而TC在Phase 3广播ABORT消息
+  - Phase 2 TC 广播PRE-COMMIT消息，如果P1在收到消息前宕机，因而TC在Phase 3广播ABORT消息
   - 在Phase 2，P2回复ack之后进入Phase 3，并且与TC直接发生网络分区(network-partition)导致P2无法收到ABORT消息，故而自行决定commit
 - 网络通信需要3 RTT，开销较大
 
+其他:
+- 标准的3PC是理想状态下，是fail-stop（the server only exhibits crash failures，且不恢复）模型
+- 标准的3PC描述Phase 3时，如果TC收到多数(majority)的ack（其他的认为宕机了），即可广播COMMIT（没有收到ack则意味着participant宕机且不恢复）
+- 根据以上两点，所以标准的3PC在synchronous systems（有限的timeout）下是可行的方案（上文的典型冲突情景不再发生）
+
+
 PS： 
-- 根据[F·L·P定理](https://github.com/1Feng/learn-distributed-systems/blob/master/theory/consensus/F-L-P/README.md)实现分布式共识是不可能的，但是实践之中我们能尽可能的去达成共识
+- 根据[F·L·P定理](https://github.com/1Feng/learn-distributed-systems/blob/master/theory/consensus/F-L-P/README.md)在asynchronous system 模型下实现分布式共识是不可能的，但是实践之中我们能尽可能的去达成共识
 
 #Reference
 [1]. [D. Skeen and M. Stonebraker, “A Formal Model of Crash Recovery in a Distributed Systems,” IEEE Transactions on Software Engineering, SE-9, 3, (May 1983), pp. 219–228.](https://github.com/1Feng/learn-distributed-systems/blob/master/theory/consensus/atomic-commit-protocols/3PC/A-Formal-Model-of-Crash-Recovery-in-a-Distributed-System.pdf)
