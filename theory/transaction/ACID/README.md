@@ -45,7 +45,6 @@ Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间�
 
 
 #How
-> 此处仅讨论nested transactions的实现
 
 
 ##Atomicity ★★★★
