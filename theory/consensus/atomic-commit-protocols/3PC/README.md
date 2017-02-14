@@ -41,7 +41,7 @@
   
 #Weakness
 
-> 3PC是一个理想状态的协议，假设fail-stop模型，并且可以通过timeout来准确判断网络故障还是宕机的情景(synchronous systems)下的协议（上文我们是按照真实环境来分析解析的），并且仅支持single-failure
+> 3PC是一个理想状态的协议，假设fail-stop模型，并且可以通过timeout来准确判断网络故障还是宕机的情景(synchronous systems)下的协议（上文我们是按照真实环境来分析解析的） 
 
 - 所以典型的一个3PC的冲突情景如下：
   - Phase 2 TC 广播PRE-COMMIT消息，如果P1在收到消息前宕机，因而TC在Phase 3广播ABORT消息
@@ -49,8 +49,8 @@
 - 网络通信需要3 RTT，开销较大
 
 其他:
-- 标准的3PC是理想状态下，是fail-stop（the server only exhibits crash failures，且不恢复）模型
-- 标准的3PC描述Phase 3时，如果TC收到多数(majority)的ack（其他的认为宕机了），即可广播COMMIT（没有收到ack则意味着participant宕机且不恢复）
+- 标准的3PC假设的前提是理想状态，即fail-stop（the server only exhibits crash failures，且不恢复）模型
+- 标准的3PC描述Phase 3时，如果TC收到多数(majority)的ack，即可广播COMMIT（没有收到ack则意味着participant宕机且不恢复）
 - 根据以上两点，所以标准的3PC在synchronous systems（有限的timeout）下是可行的方案（上文的典型冲突情景不再发生）
 
 
