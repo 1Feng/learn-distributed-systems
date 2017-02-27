@@ -1,0 +1,3 @@
+[submodule "theory/unreliable-network/partitions-post"]
+	path = theory/unreliable-network/partitions-post
+	url = git@github.com:aphyr/partitions-post.git
