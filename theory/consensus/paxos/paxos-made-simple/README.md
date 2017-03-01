@@ -45,7 +45,7 @@
   
 > 只要满足P2c就可以满足P2b，进而满足P2；至此我们便有了更具体的方式来实现P2c,具体如下：
   1. proposer选择一个proposal number n，然后向每个acceptors发起请求，要求acceptors：
-    - 保证不再接受(accept)number小于n的提议，并且
+    - 保证不再接受(accept)number小于n的提议，并且
     - 如果已经接受过(accepted)number小于n的提议，则这些提议中number小于n的最大的number以及该提议的value返回给proposer
   2. 如果proposer收到大多数(majority)的acceptors的响应，则proposer可以发起一个序号为number的提议，其value是v
     - v是所有acceptor响应的(mi, vi)中最大的m对应的v
@@ -61,15 +61,15 @@
 - **Phase 1**
   - proposer生成一个proposer number n，然后发送prepare请求到所有（其实也可以是majority，但越多越能保证收到过半数的回复）acceptors
   - acceptor收到prepare请求后：
-    - 如果之前有收到proposal number > n的prepare请求，则直接忽略该prepare请求，否则
-    - 回复该prepare请求，同时如果之前有接受（accept）提议，则回复内容中带上接受的提议value和对应该value的最大的proposal number
+    - 如果之前有收到proposal number > n的prepare请求，则直接忽略该prepare请求，否则
+    - 回复该prepare请求，同时如果之前有接受（accept）提议，则回复内容中带上接受的提议value和对应该value的最大的proposal number
 - **Phase 2**
   - proposer收到总数过半（majority）的回复后：
-    - 如果所有回复中都没有携带提议value，则proposal自己选择一个提议value 
-    - 否则从所有回复中选择proposal number最大的的value 
-    - 向所有(其实也可以是majority，但越多越能保证收到过半数的accept）acceptor发送上述得到的提议value和proposer number n
+    - 如果所有回复中都没有携带提议value，则proposal自己选择一个提议value 
+    - 否则从所有回复中选择proposal number最大的的value 
+    - 向所有(其实也可以是majority，但越多越能保证收到过半数的accept）acceptor发送上述得到的提议value和proposer number n
   - acceptor收到提议请求后：
-    - 如果之前没有回复proposal number > n的prepare请求，则接受（accept）该请求
+    - 如果之前没有回复proposal number > n的prepare请求，则接受（accept）该请求
 
 > 以上可以完成总数过半的acceptor 接受（accept）一个value，但并不代表被chosen，该value被chosen需要：
 
