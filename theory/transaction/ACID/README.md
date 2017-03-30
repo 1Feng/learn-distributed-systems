@@ -1,5 +1,5 @@
-#What
-##Atomicity
+# What
+## Atomicity
 **描述**：
 
 一个事务包含一系列的操作，这一系列的操作都成功，则意味着事务执行成功；一旦执行过程中发生故障(fault)，数据库需要放弃整个事务，并且撤销已经完成的部分操作
@@ -19,7 +19,7 @@ A向B账户转账100元：
 **其他**：
 > 这里需要与concurrency-atomic做一下区分, concurrency-atomic指的是当某个线程执行某个操作时，其他线程不可能看到中间状态(half-finished)
 
-##Consistency
+## Consistency
 
 **描述**：
 
@@ -32,7 +32,7 @@ A向B账户转账100元：
 2. ACID-consistency 和CAP-consistency直接没有任何关系，仅仅使用了同一个单词而已
 
 
-##Islation
+## Islation
 **描述**：
 
 Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间存在隔离，执行过程中互不影响
@@ -44,14 +44,14 @@ Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间�
 一旦事务成功提交，即使发生硬件故障或者程序崩溃，任何已经写入的数据都不能丢失
 
 
-#How
+# How
 
 
-##Atomicity ★★★★
+## Atomicity ★★★★
 可以利用持久化日志来实现，方便重启回滚
-##Consistency ★★
+## Consistency ★★
 数据库层面做足够的合法性检测，其他由用户层/应用层来保证
-##Islation ★★★★★
+## Islation ★★★★★
 **先看几点要求**：
 - Read commited（weak-islation type） 的两点要求
   - No Dirty Read: 不会读取到其他正在执行的事务中间状体的数据
@@ -88,7 +88,7 @@ Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间�
         update doctors set on_call = true where name=‘Bob’ and shift_id = 1234
       }
     ```
-    - 有点像是multi-object版本的read-modify-write，但是有本质区别
+    - 有点像是multi-object版本的read-modify-write，但是有本质区别
 
 **解决方案**：
 - Read commited
@@ -108,16 +108,16 @@ Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间�
 > 通常为了实现isolation，都是综合以上各种方案
 
 
-##Durability ★★★★
+## Durability ★★★★
 
 磁盘+replica
 
 
-#Serializability
-##What
+# Serializability
+## What
 > serializable-isolation 是最强等级的事务并发隔离，他可以确保即使多个事务是并行(parallel)执行的,最终的结果看起来也像是顺序的（serially），每个时间点只有一个事务在执行
 
-##How
+## How
 > 根据上述描述，不难看出，其要求是让数据库解决所有的可能的并发竞争问题
 
 - 真的串行化的执行事务：
@@ -147,14 +147,15 @@ Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间�
     - detecting writes that affect prior read：同样考虑write skew，数据库从index-level/table-level保存一些信息，以便当事务提交后可以检测其操作是否造成其他正在执行的事务读取的数据过期（前置条件失效），如果存在则主动通知该事务终止
 
  
-##Serializability VS Linearizability
+## Serializability VS Linearizability
  - serializability： 事务隔离的属性，指事务执行的结果看起来像顺序的（串行的），以避免write skew
  - linearizability： 指对读写共享数据的新近性（recency guarantee），与事务（把一系列操作看做整体来讨论）无关
 
 
-#References
+# References
 
 [1]. [Martin Kleppmann. 《Designing Data-Intensive Applications》7.Transactions](http://dataintensive.net/)
 
 [2]. [ACID properties](https://msdn.microsoft.com/en-us/library/aa480356.aspx)
-[3]. [Linearizability versus Serializability](http://www.bailis.org/blog/linearizability-versus-serializability/Linearizability versus Serializability)
+
+[3]. [Linearizability versus Serializability](http://www.bailis.org/blog/linearizability-versus-serializability/Linearizability)
