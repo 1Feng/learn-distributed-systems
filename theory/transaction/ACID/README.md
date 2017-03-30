@@ -37,7 +37,7 @@ A向B账户转账100元：
 
 Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间存在隔离，执行过程中互不影响
 
-##Durability
+## Durability
 
 **描述**：
 
