@@ -157,3 +157,4 @@ Isolation是指当多个事务并发(concurrency)执行时，应该彼此之间�
 [1]. [Martin Kleppmann. 《Designing Data-Intensive Applications》7.Transactions](http://dataintensive.net/)
 
 [2]. [ACID properties](https://msdn.microsoft.com/en-us/library/aa480356.aspx)
+[3]. [Linearizability versus Serializability](http://www.bailis.org/blog/linearizability-versus-serializability/Linearizability versus Serializability)
