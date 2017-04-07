@@ -1,8 +1,8 @@
-#Introduce
+# Introduce
 
 >分布式环境面临的两个主要的问题就是网络不可靠和时钟不可靠，这里主要总结时钟问题
 
-##Physical Clocks
+## Physical Clocks
 我们日常使用的计算机和服务器的物理时钟都是使用的石英(quartz)时钟，这类时钟天生存在误差，虽然铯原子钟的精度更高但是造价昂贵，并不适合商用计算机。
 
 对于商用计算机的时钟误差，通常使用NTP协议来进行时钟同步，然而由于网络的不可靠以及时钟误差NTP同步也会有些问题。
@@ -37,18 +37,18 @@
 - 偏序（partial order）：
   - 利用因果关系来解决时序问题，即logic clock
   
-##Logic Clock
+## Logic Clock
 
 利用因果关系来实现Logic Clock，见Lamport的[论文](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/timing-and-order/Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System)
 
 利用Logic Clock来保证时序(偏序)，见 [Vector Clock](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/timing-and-order/vector-clock)
   
 
-##其他 
+## 其他 
 一个错误使用wall clock的[案例](http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)
   
   
-##References
+## References
 1. [《Designing Data-Intensive Applications》8.Unreliable Clocks](http://dataintensive.net/)
 2. [How to do distributed locking](http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)
 3. [《Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System》](https://github.com/1Feng/learn-distributed-systems/tree/master/theory/timing-and-order/Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System)
