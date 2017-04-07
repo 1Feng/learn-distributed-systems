@@ -1,5 +1,5 @@
-#Summary
-###Happend before
+# Summary
+### Happend before
 用→来表示`hanppend before`，对于任意event a, b 有：
 
 1. 如果a和b属于同一个process，并且a comes before b, 则 a → b
@@ -36,7 +36,7 @@ b →  c 并且 a  →  c, 但是a,b并不能推导出因果关系，因此`happ
 
 Logical Clock 的缺点：a, b可能同时发生，C(a) < C(b)并不能推断出a → b
 
-###total ordering
+### total ordering
 > In mathematics, a linear order, total order, simple order, or (non-strict) ordering is a binary relation on some set X, which is antisymmetric, transitive, and total. A set paired with a total order is called a totally ordered set, a linearly ordered set, a simply ordered set, or a chain. ---- from wikipedia
 
 定义关系=>如下：
@@ -66,7 +66,7 @@ paper中举例使用no-fault-tolent total ordering解决分布式情况下mutual
 2. 利用Physical Clock
 
 
-###Physical Clocks
+### Physical Clocks
 大概介绍了什么样（主要指同步）的physical clock可以用来解决上述的问题。
 
 ### References
