@@ -1,4 +1,4 @@
-#Why
+# Why
 1983年由Dale Skeen 和 Michael Stonebraker[提出](https://github.com/1Feng/learn-distributed-systems/blob/master/theory/consensus/atomic-commit-protocols/3PC/A-Formal-Model-of-Crash-Recovery-in-a-Distributed-System.pdf)了3PC协议来解决2PC阻塞的问题
 #What
 3PC（two-phase-commit）其实就是将2PC的Phase 2拆分成了两个阶段：
@@ -19,7 +19,7 @@
   - 如果TC在超时时间内收到所有的ack，则向participants广播COMMIT消息，否则广播ABORT消息（广播之前需更新日志，记录事务执行状态）
   - Participant收到COMMIT/ABORT消息后，将事务正式commit/abort（考虑ACID-isolation，commit/abort完成后会释放所有锁）并回复ack
 
-#How
+# How
 
 
 **状态迁移图**
@@ -39,7 +39,7 @@
   - TC发送了COMMIT/ABORT消息之后，如果长时间没有收到ack或者宕机重启之后都会根据write-ahead-log的内容重新发送消息，重试几次后结束（如果是发送COMMIT，则意味着TC认为事务已经完成；ABORT消息同理）
   - Participants如果长时间没有收到COMMIT/ABORT消息，执行commit
   
-#Weakness
+# Weakness
 
 > 3PC是一个理想状态的协议，假设fail-stop模型，并且可以通过timeout来准确判断网络故障还是宕机的情景(synchronous systems)下的协议（上文我们是按照真实环境来分析解析的） 
 
@@ -57,7 +57,7 @@
 PS： 
 - 根据[F·L·P定理](https://github.com/1Feng/learn-distributed-systems/blob/master/theory/consensus/F-L-P/README.md)在asynchronous system 模型下实现分布式共识是不可能的，但是实践之中我们能尽可能的去达成共识
 
-#Reference
+# Reference
 [1]. [D. Skeen and M. Stonebraker, “A Formal Model of Crash Recovery in a Distributed Systems,” IEEE Transactions on Software Engineering, SE-9, 3, (May 1983), pp. 219–228.](https://github.com/1Feng/learn-distributed-systems/blob/master/theory/consensus/atomic-commit-protocols/3PC/A-Formal-Model-of-Crash-Recovery-in-a-Distributed-System.pdf)
 
 [2]. [Sukumar Ghosh. 《Distributed Systems An Algorithmic Approach Second Edition》 14.5 Atomic Commit Protocols](https://www.amazon.com/Distributed-Systems-Algorithmic-Approach-Information/dp/1466552972)
