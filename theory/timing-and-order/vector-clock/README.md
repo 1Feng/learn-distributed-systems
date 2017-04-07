@@ -1,5 +1,5 @@
-#Summary
-###Why
+# Summary
+### Why
 Lammport Clock(Logical Clock) 只能通过因果关系推断其Logical Clock的关系，即：
 
 - 如果a → b, 则C(a) < C(b), 反过来并不一定成立（其实就是事后诸葛亮，事件先发生才产生因果关系），同时：
@@ -21,7 +21,7 @@ Vector Clock的出现就是为了解决上述问题。
 
 同时：`VC(a) < VC(b)   <==> a  → b`
 
-###How
+### How
 
 processes编号0--n-1, VC利用数组实现，下标从0到n-1，初始为[0,0,0...0]
 
@@ -31,7 +31,7 @@ processes编号0--n-1, VC利用数组实现，下标从0到n-1，初始为[0,0,0
   - ++VCj[j]
   - ∀k : 0 <= k <= n - 1:  VCj[k] = max(VCi[k], VCj[k])
   
-###Weakness
+### Weakness
 
 1. partial order not total order
   - 无法满足VC(a) < VC(b)时还是无法解决order问题。dynamo论文中的提到的处理方式是将该问题抛给client根据业务处理（PS：dynamo据说已经不用vector clock了）
