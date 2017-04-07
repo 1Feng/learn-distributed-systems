@@ -1,9 +1,9 @@
-#Summary
+# Summary
 > paxos算法的的核心思想是“与其预测未来，不如限制当下”，即通过保证当前的操作，来一步一步达到预期
 
 
-#Theory
-##要求
+# Theory
+## 要求
 
 **Safety**:
 - 只有一个被提议的value被选定(validity)
@@ -13,7 +13,7 @@
 - 最终会有被提议的value被选定
 - 如果一个value被选定，任意进程最终一定会得知这一结果
 
-##推导过程
+## 推导过程
 
 首先设定三个角色 proposers，acceptors，learners。
 
